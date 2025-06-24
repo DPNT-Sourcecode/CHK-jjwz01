@@ -3,13 +3,20 @@ class CheckoutSolution:
 
     # skus = unicode string
     def checkout(self, skus):
-        prices = {'A': 50, 'B': 30, 'C':20, 'D':15, 'E':40, 'F':10, 'G':20, 'H':10, 'I':35, 'J':60, 'K':80, 'L':90, 'M':15, 'N':40 , 'O':10, 'P':50, 'Q':30, 'R':50, 'S':30, 'T':20, 'U':40, 'V':50, 'W':20, 'X':90 ,'Y':10, 'Z':50}
+        prices = {'A': 50, 'B': 30, 'C':20, 'D':15, 'E':40, 'F':10, 'G':20, 'H':10, 'I':35, 'J':60, 'K':70, 'L':90, 'M':15, 'N':40 , 'O':10, 'P':50, 'Q':30, 'R':50, 'S':20, 'T':20, 'U':40, 'V':50, 'W':20, 'X':17 ,'Y':20, 'Z':21}
         basket = {}
+        group_offer = {'items' : ['S','T','X','Y','Z'], 'count': 3, 'price': 45}
         for item in skus:
             if item not in prices:
                 return -1
             basket[item] = basket.get(item, 0)+1
         total = 0
+
+        group_items = group_offer['items']
+        group_count = sum(basket[item] for item in group_items)
+        group_price = group_count//group_offer['count']
+        total += group_price * group_offer['price']
+
         if 'E' in basket and 'B' in basket:
             freeB = min(basket['E'] // 2, basket['B'])
             basket['B'] -= freeB
@@ -60,7 +67,7 @@ class CheckoutSolution:
             total += basketP* prices['P']
         if 'K' in basket:
             basketK = basket['K']
-            total += (basketK//2)*150
+            total += (basketK//2)*120
             basketK %= 2
             total += basketK* prices['K']
         if 'B' in basket:
@@ -74,3 +81,4 @@ class CheckoutSolution:
         
         
             
+
