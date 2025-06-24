@@ -3,7 +3,7 @@ class CheckoutSolution:
 
     # skus = unicode string
     def checkout(self, skus):
-        prices = {'A': 50, 'B': 30, 'C':20, 'D':15, 'E':40}
+        prices = {'A': 50, 'B': 30, 'C':20, 'D':15, 'E':40, 'F':10}
         basket = {}
         for item in skus:
             if item not in prices:
@@ -13,6 +13,10 @@ class CheckoutSolution:
         if 'E' in basket and 'B' in basket:
             freeB = min(basket['E'] // 2, basket['B'])
             basket['B'] -= freeB
+        if 'F' in basket:
+            basketF = basket['F']
+            paidF = basketF - (basketF//3)
+            total += paidF * prices['F']
         if 'A' in basket:
             basketA = basket['A']
             total += (basketA//5)*200
@@ -31,3 +35,4 @@ class CheckoutSolution:
         
         
             
+
