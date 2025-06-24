@@ -22,16 +22,14 @@ class CheckoutSolution:
             total += basket['A']* prices['A']
         if 'B' in basket:
             total += (basket['B']//2)*45 + (basket['B']%2)* prices['B']
-        if 'C' in basket:
-            total += basket['C'] * prices['C']
-        if 'D' in basket:
-            total += basket['D'] * prices['D']
-        if 'E' in basket:
-            totalk += basket['E'] * prices['E']
+        for item in ['C', 'D', 'E']:
+            if item in basket:
+                total += basket[item] * prices[item]
         return total
         
         
         
         
             
+
 
