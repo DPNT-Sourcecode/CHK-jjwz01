@@ -22,8 +22,7 @@ class CheckoutSolution:
             while basket.get(item, 0) > 0 and trim_items > 0:
                 basket[item] -= 1
                 trim_items -= 1
-        for item, count in basket.items():
-            total += prices[item] * count
+
 
         if 'E' in basket and 'B' in basket:
             freeB = min(basket['E'] // 2, basket['B'])
@@ -89,3 +88,4 @@ class CheckoutSolution:
         
         
             
+
