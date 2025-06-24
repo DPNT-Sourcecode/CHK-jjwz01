@@ -44,9 +44,9 @@ class CheckoutSolution:
         if 'V' in basket:
             basketV = basket['V']
             total += (basketV//3)*130
-            basketV %= 5
-            total += (basketV//2)*90 
             basketV %= 3
+            total += (basketV//2)*90 
+            basketV %= 2
             total += basketV* prices['V']
         if 'Q' in basket:
             basketQ = basket['Q']
@@ -74,5 +74,3 @@ class CheckoutSolution:
         
         
             
-
-
