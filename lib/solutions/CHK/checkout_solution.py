@@ -15,11 +15,11 @@ class CheckoutSolution:
             basket['B'] -= freeB
         if 'A' in basket:
             basketA = basket['A']
-            total += (basket['A']//5)*200
+            total += (basketA//5)*200
             basketA %= 5
-            total += (basket['A']//3)*130 
+            total += (basketA//3)*130 
             basketA %= 3
-            total += basket['A']* prices['A']
+            total += basketA* prices['A']
         if 'B' in basket:
             total += (basket['B']//2)*45 + (basket['B']%2)* prices['B']
         for item in ['C', 'D', 'E']:
@@ -31,5 +31,6 @@ class CheckoutSolution:
         
         
             
+
 
 
