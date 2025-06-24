@@ -16,6 +16,14 @@ class CheckoutSolution:
         group_count = sum(basket.get(item, 0) for item in group_items)
         group_price = group_count//group_offer['count']
         total += group_price * group_offer['price']
+        sorted_items = sorted(group_items, key=lambda x: prices[x], reverse=True)
+        trim_items = group_price * group_offer['count']
+        for item in sorted_items:
+            while basket.get(item, 0) > 0 and trim_items > 0:
+                basket[item] -= 1
+                trim_items -= 1
+        for item, count in basket.items():
+            total += prices[item] * count
 
         if 'E' in basket and 'B' in basket:
             freeB = min(basket['E'] // 2, basket['B'])
@@ -81,5 +89,3 @@ class CheckoutSolution:
         
         
             
-
-
